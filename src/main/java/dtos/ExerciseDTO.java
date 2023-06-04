@@ -38,4 +38,5 @@ public class ExerciseDTO {
         exercises.forEach(exercise -> exerciseDTOs.add(new ExerciseDTO(exercise)));
         return exerciseDTOs;
     }
+
 }
