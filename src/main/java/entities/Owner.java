@@ -4,6 +4,8 @@ package entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,5 +26,9 @@ public class Owner {
     @Column(name="phone")
     private String phone;
 
-
+    @JoinTable(name = "boat_owner", joinColumns = {
+            @JoinColumn(name = "owner_id", referencedColumnName = "id")}, inverseJoinColumns = {
+            @JoinColumn(name = "boat_id", referencedColumnName = "boat_id")})
+    @ManyToMany
+    private List<Boats> boatList = new ArrayList<>();
 }

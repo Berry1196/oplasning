@@ -3,6 +3,7 @@ package entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,6 +23,13 @@ public class Boats {
     private String make;
     @Column(name="image")
     private String image;
+
+    @ManyToMany(mappedBy = "boatList")
+    private List<Owner> owner;
+
+    @ManyToOne
+    @JoinColumn(name = "harbour_id")
+    private Harbour harbour;
 
 
 }

@@ -3,6 +3,7 @@ package entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -22,4 +23,7 @@ public class Harbour {
     private String address;
     @Column(name="capacity")
     private int capacity;
+
+    @OneToMany(mappedBy = "harbour")
+    private List<Boats> boat;
 }
