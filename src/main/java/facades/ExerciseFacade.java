@@ -131,4 +131,10 @@ public class ExerciseFacade {
         }
         return ExerciseDTO.getDTOs(exercises);
     }
+
+    public static void main(String[] args) {
+        EntityManagerFactory emf = EMF_Creator.createEntityManagerFactory();
+        ExerciseFacade fe = getExerciseFacade(emf);
+        System.out.println(fe.getExercises());
+    }
 }

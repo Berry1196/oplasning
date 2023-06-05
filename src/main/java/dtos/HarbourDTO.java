@@ -18,13 +18,20 @@ public class HarbourDTO {
     private String name;
     private String address;
     private int capacity;
-    private List<BoatsDTO> boat = new ArrayList<>();
+    private List<BoatsDTO> boatList;
 
     public HarbourDTO(Harbour harbour) {
+        this.id = harbour.getId();
         this.name = harbour.getName();
         this.address = harbour.getAddress();
         this.capacity = harbour.getCapacity();
-        this.boat = BoatsDTO.getDTOs(harbour.getBoat());
+        this.boatList = BoatsDTO.getDTOs(harbour.getBoat());
+    }
+
+    public HarbourDTO(String harbourName, String address, int capacity) {
+        this.name = harbourName;
+        this.address = address;
+        this.capacity = capacity;
     }
 
     public static List<HarbourDTO> getDTOs(List<Harbour> harbours){

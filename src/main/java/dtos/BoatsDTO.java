@@ -1,6 +1,7 @@
 package dtos;
 
 import entities.Boats;
+import entities.Harbour;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -18,13 +19,22 @@ public class BoatsDTO {
     private String brand;
     private String make;
     private String image;
-    private HarbourDTO harbour;
+    private String harbour;
 
     public BoatsDTO(Boats boats) {
+        this.id = boats.getId();
         this.brand = boats.getBrand();
         this.make = boats.getMake();
         this.image = boats.getImage();
-        this.harbour = new HarbourDTO(boats.getHarbour());
+        if (boats.getHarbour() != null) {
+            this.harbour = boats.getHarbour().getName();
+        }
+    }
+
+    public BoatsDTO(String brand, String make, String image) {
+        this.brand = brand;
+        this.make = make;
+        this.image = image;
     }
 
     public static List<BoatsDTO> getDTOs(List<Boats> boats){

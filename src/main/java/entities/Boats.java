@@ -1,5 +1,6 @@
 package entities;
 
+import dtos.HarbourDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -8,8 +9,6 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
 @Entity
 @Table(name = "boats")
 public class Boats {
@@ -31,5 +30,11 @@ public class Boats {
     @JoinColumn(name = "harbour_id")
     private Harbour harbour;
 
+
+    public Boats(String brand, String make, String image) {
+        this.brand = brand;
+        this.make = make;
+        this.image = image;
+    }
 
 }

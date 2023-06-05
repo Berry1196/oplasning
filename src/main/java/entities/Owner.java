@@ -10,8 +10,7 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@ToString
-@EqualsAndHashCode
+
 @Entity
 @Table(name = "owner")
 public class Owner {
@@ -31,4 +30,15 @@ public class Owner {
             @JoinColumn(name = "boat_id", referencedColumnName = "boat_id")})
     @ManyToMany
     private List<Boats> boatList = new ArrayList<>();
+
+    public Owner(String name, String address, String phone) {
+        this.name = name;
+        this.address = address;
+        this.phone = phone;
+    }
+
+    //Add boat to owner
+    public void addBoat(Boats boat){
+        boatList.add(boat);
+    }
 }

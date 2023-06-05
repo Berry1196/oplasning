@@ -3,13 +3,13 @@ package entities;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @ToString
-@EqualsAndHashCode
 @Entity
 @Table(name = "harbour")
 public class Harbour {
@@ -25,5 +25,11 @@ public class Harbour {
     private int capacity;
 
     @OneToMany(mappedBy = "harbour")
-    private List<Boats> boat;
+    private List<Boats> boat = new ArrayList<>();
+
+    public Harbour(String name, String address, int capacity) {
+        this.name = name;
+        this.address = address;
+        this.capacity = capacity;
+    }
 }
