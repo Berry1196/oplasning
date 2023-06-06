@@ -16,14 +16,13 @@ public class OwnerDTO {
     private String name;
     private String address;
     private String phone;
-    private List<BoatsDTO> boatList = new ArrayList<>();
+
 
     public OwnerDTO(Owner owner) {
         this.id = owner.getId();
         this.name = owner.getName();
         this.address = owner.getAddress();
         this.phone = owner.getPhone();
-        this.boatList = BoatsDTO.getDTOs(owner.getBoatList());
     }
 
     public OwnerDTO(String name, String address, String phone) {

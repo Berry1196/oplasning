@@ -14,7 +14,8 @@ public class OwnerFacade {
     private static EntityManagerFactory emf;
 
     //Private Constructor to ensure Singleton
-    private OwnerFacade() {}
+    private OwnerFacade() {
+    }
 
     public static OwnerFacade getOwnerFacade(EntityManagerFactory _emf) {
         if (instance == null) {
@@ -77,7 +78,7 @@ public class OwnerFacade {
     }
 
     public static void main(String[] args) {
-       OwnerFacade facade =  OwnerFacade.getOwnerFacade(EMF_Creator.createEntityManagerFactory());
-       facade.addOwnerToBoat(1L, 1L);
+        OwnerFacade facade = OwnerFacade.getOwnerFacade(EMF_Creator.createEntityManagerFactory());
+        System.out.println(facade.getOwners());
     }
 }

@@ -20,6 +20,9 @@ public class BoatsDTO {
     private String make;
     private String image;
     private String harbour;
+    private List<OwnerDTO> owner = new ArrayList<>();
+    private Long harbour_id;
+
 
     public BoatsDTO(Boats boats) {
         this.id = boats.getId();
@@ -29,6 +32,7 @@ public class BoatsDTO {
         if (boats.getHarbour() != null) {
             this.harbour = boats.getHarbour().getName();
         }
+        this.owner = OwnerDTO.getDTOs(boats.getOwner());
     }
 
     public BoatsDTO(String brand, String make, String image) {

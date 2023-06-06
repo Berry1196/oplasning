@@ -63,6 +63,23 @@ public class HarbourFacade {
         return new HarbourDTO(harbour);
     }
 
+    //Get all boats in a harbour
+    public List<HarbourDTO> getAllBoatsInHarbour(Long id) {
+        EntityManager em = emf.createEntityManager();
+        List<Harbour> harbours;
+        try {
+            harbours = em.createQuery("SELECT h FROM Harbour h WHERE h.id = :id", Harbour.class).setParameter("id", id).getResultList();
+        } finally {
+            em.close();
+        }
+        return HarbourDTO.getDTOs(harbours);
+    }
+
+    public static void main(String[] args) {
+        HarbourFacade hf = getHarbourFacade(EMF_Creator.createEntityManagerFactory());
+        System.out.println(hf.getAllBoatsInHarbour(1L));
+    }
+
 
 
 

@@ -4,6 +4,7 @@ import dtos.HarbourDTO;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Getter
@@ -24,7 +25,7 @@ public class Boats {
     private String image;
 
     @ManyToMany(mappedBy = "boatList")
-    private List<Owner> owner;
+    private List<Owner> owner = new ArrayList<>();
 
     @ManyToOne
     @JoinColumn(name = "harbour_id")
@@ -35,6 +36,11 @@ public class Boats {
         this.brand = brand;
         this.make = make;
         this.image = image;
+    }
+
+    public void addOwner(Owner owner){
+        this.owner.add(owner);
+        owner.getBoatList().add(this);
     }
 
 }

@@ -95,6 +95,6 @@ public class BoatFacade {
 
     public static void main(String[] args) {
         BoatFacade boatFacade = BoatFacade.getBoatFacade(EMF_Creator.createEntityManagerFactory());
-        System.out.println(boatFacade.getBoats());
+        System.out.println(boatFacade.getOwnersOfBoat(1L));
     }
 }
