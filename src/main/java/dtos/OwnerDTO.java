@@ -25,7 +25,8 @@ public class OwnerDTO {
         this.phone = owner.getPhone();
     }
 
-    public OwnerDTO(String name, String address, String phone) {
+    public OwnerDTO(Long id,String name, String address, String phone) {
+        this.id = id;
         this.name = name;
         this.address = address;
         this.phone = phone;

@@ -48,4 +48,14 @@ public class BoatResource {
         FACADE.addBoatToHarbour(boatDTO.getId(), boatDTO.getHarbour_id());
        return Response.ok().build();
     }
+
+    @PUT
+    @Produces("application/json")
+    @Consumes("application/json")
+    @Path("edit")
+    public Response editBoat( String boat) {
+        BoatsDTO boatDTO = GSON.fromJson(boat, BoatsDTO.class);
+        FACADE.editBoat( boatDTO);
+        return Response.ok().build();
+    }
 }

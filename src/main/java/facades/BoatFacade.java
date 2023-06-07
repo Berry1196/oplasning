@@ -80,7 +80,7 @@ public class BoatFacade {
     }
 
     //Get all owners of a boat
-    public BoatsDTO getOwnersOfBoat(Long id) {
+   /* public BoatsDTO getOwnersOfBoat(Long id) {
         EntityManager em = emf.createEntityManager();
         Boats boat = em.find(Boats.class, id);
         try {
@@ -91,10 +91,25 @@ public class BoatFacade {
             em.close();
         }
         return new BoatsDTO(boat);
+    }*/
+    //Edit a boat
+    public BoatsDTO editBoat( BoatsDTO boatDTO) {
+        EntityManager em = emf.createEntityManager();
+        Boats boat = em.find(Boats.class, boatDTO.getId());
+        try {
+            em.getTransaction().begin();
+            boat.setBrand(boatDTO.getBrand());
+            boat.setMake(boatDTO.getMake());
+            boat.setImage(boatDTO.getImage());
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+        return new BoatsDTO(boat);
     }
 
-    public static void main(String[] args) {
-        BoatFacade boatFacade = BoatFacade.getBoatFacade(EMF_Creator.createEntityManagerFactory());
-        System.out.println(boatFacade.getOwnersOfBoat(1L));
-    }
+//    public static void main(String[] args) {
+//        BoatFacade boatFacade = BoatFacade.getBoatFacade(EMF_Creator.createEntityManagerFactory());
+//        boatFacade.editBoat(new BoatsDTO(88L,"test","test","test"));
+//    }
 }

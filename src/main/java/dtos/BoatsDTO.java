@@ -35,7 +35,8 @@ public class BoatsDTO {
         this.owner = OwnerDTO.getDTOs(boats.getOwner());
     }
 
-    public BoatsDTO(String brand, String make, String image) {
+    public BoatsDTO(Long id,String brand, String make, String image) {
+        this.id = id;
         this.brand = brand;
         this.make = make;
         this.image = image;

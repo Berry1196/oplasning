@@ -77,8 +77,26 @@ public class OwnerFacade {
         return new OwnerDTO(owner);
     }
 
-    public static void main(String[] args) {
-        OwnerFacade facade = OwnerFacade.getOwnerFacade(EMF_Creator.createEntityManagerFactory());
-        System.out.println(facade.getOwners());
+    //Edit an owner
+    public OwnerDTO editOwner(OwnerDTO ownerDTO) {
+        EntityManager em = emf.createEntityManager();
+        Owner owner = em.find(Owner.class, ownerDTO.getId());
+        try {
+            em.getTransaction().begin();
+            owner.setName(ownerDTO.getName());
+            owner.setAddress(ownerDTO.getAddress());
+            owner.setPhone(ownerDTO.getPhone());
+            em.getTransaction().commit();
+        } finally {
+            em.close();
+        }
+        return new OwnerDTO(owner);
     }
+
+    public static void main(String[] args) {
+        OwnerFacade of = getOwnerFacade(EMF_Creator.createEntityManagerFactory());
+        of.editOwner(new OwnerDTO(5L, "Jens", "Jensvej 1", "12345678"));
+    }
+
+
 }
