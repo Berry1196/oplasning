@@ -3,6 +3,7 @@ package facades;
 import dtos.HarbourDTO;
 import entities.Harbour;
 import utils.EMF_Creator;
+import entities.Boats;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -55,6 +56,10 @@ public class HarbourFacade {
         Harbour harbour = em.find(Harbour.class, id);
         try {
             em.getTransaction().begin();
+            for (Boats boats: harbour.getBoat()) {
+                boats.setHarbour(null);
+                em.remove(boats);
+            }
             em.remove(harbour);
             em.getTransaction().commit();
         } finally {

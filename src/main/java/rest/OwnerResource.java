@@ -36,7 +36,8 @@ public class OwnerResource {
     @Path("edit")
     public Response editOwner(String owner) {
         OwnerDTO ownerDTO = GSON.fromJson(owner, OwnerDTO.class);
-        FACADE.editOwner(ownerDTO);
-        return Response.ok().build();
+        OwnerDTO updatedOwner = FACADE.editOwner(ownerDTO);
+
+        return Response.ok().entity(updatedOwner).build();
     }
 }

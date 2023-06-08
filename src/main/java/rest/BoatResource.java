@@ -55,7 +55,7 @@ public class BoatResource {
     @Path("edit")
     public Response editBoat( String boat) {
         BoatsDTO boatDTO = GSON.fromJson(boat, BoatsDTO.class);
-        FACADE.editBoat( boatDTO);
-        return Response.ok().build();
+        BoatsDTO updatedBoat = FACADE.editBoat(boatDTO);
+        return Response.ok().entity(updatedBoat).build();
     }
 }
