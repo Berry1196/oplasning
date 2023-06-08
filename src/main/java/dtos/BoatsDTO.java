@@ -47,4 +47,5 @@ public class BoatsDTO {
         boats.forEach(boat -> boatsDTOs.add(new BoatsDTO(boat)));
         return boatsDTOs;
     }
+
 }
